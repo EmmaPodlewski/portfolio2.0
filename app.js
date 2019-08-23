@@ -2,6 +2,12 @@
 
 $(document).ready(function () {
 
+  var speed = 75;
+  setTimeout(function () {
+    $('.subtitle-header').css('display', 'block');
+    typeEffect($('.subtitle-header'), speed);
+  });
+
   // Check for click events on the navbar burger icon
   $(".navbar-burger").click(function () {
 
@@ -10,12 +16,9 @@ $(document).ready(function () {
     $(".navbar-menu").toggleClass("is-active");
 
   });
-});
-
 
 // Nav Position
 
-$(document).ready(function () {
   var isMobile;
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     isMobile = true;
@@ -56,6 +59,23 @@ function highlightLink(anchor) {
   $("a").find('[navbar-item="' + anchor + '"]').addClass('is-active');
 }
 
+// In-view function
+const handleView = item => {
+  const linkEl = document.querySelector(`#link-${item}`);
+
+  let offsetHeight = 0.6 * (window.innerHeight)
+  inView.offset({
+    bottom: offsetHeight
+  });
+
+  inView(`#${item}`)
+    .on("enter", () => linkEl.classList.add('is-active'))
+    .on("exit", el => linkEl.classList.remove('is-active'))
+};
+
+// Apply method on each DOM element
+["home", "expertise", "aboutus", "portfolio", "contact"].forEach(handleView);
+
 // Header Type Effect
 
 function typeEffect(element, speed) {
@@ -72,17 +92,6 @@ function typeEffect(element, speed) {
     }
   }, speed);
 }
-
-$(document).ready(function () {
-  var speed = 75;
-  var delay = $('.title-header').text().length * speed + speed;
-  typeEffect($('.title-header'), speed);
-  setTimeout(function () {
-    $('.subtitle-header').css('display', 'block');
-    typeEffect($('.subtitle-header'), speed);
-  }, delay);
-});
-
 
 // Portfolio tab selection
 
