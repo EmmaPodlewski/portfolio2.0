@@ -49,6 +49,10 @@ background-image: linear-gradient(to right, rgba(7, 136, 155,0.5), rgba(30, 39, 
   font-weight: 200;
 }
 
+.text-justify {
+  text-align: justify;
+}
+
 .u-paddingRight--quarter {
   padding-right: 6px;
 }
@@ -238,6 +242,10 @@ a.navbar-item.text-is-white:hover {
   border: 0.4px solid #d3d3d3;
   background-color: #07889B;
   border-radius: 50%;
+}
+
+.image-rounded {
+  border-radius: 10%;
 }
 
 .image .img-expertise {
